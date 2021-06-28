@@ -1,0 +1,18 @@
+.webix_toolbar {
+  background-color: #657584;
+}
+.textToolbar {
+  color: white;
+}
+.webix_list {
+  background-color: #eee;
+}
+.webix_list_item {
+  background-color: #eee;
+}
+.webix_list_item.webix_selected {
+  background-color: #1995ad;
+}
+.r3_text {
+  text-align: center;
+}
