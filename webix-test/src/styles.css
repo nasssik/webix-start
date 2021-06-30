@@ -1,6 +1,10 @@
 .webix_toolbar {
   background-color: #657584;
 }
+.webix_toolbar .webix_el_label .webix_el_box {
+  background-color: #657584;
+}
+
 .textToolbar {
   color: white;
 }
@@ -15,4 +19,10 @@
 }
 .r3_text {
   text-align: center;
+}
+.connected {
+  color: green;
+}
+.webix_el_label .webix_el_box {
+  background-color: #eee;
 }

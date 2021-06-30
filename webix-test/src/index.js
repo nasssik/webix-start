@@ -64,7 +64,6 @@ var list = [
 
 var row1 = {
   view: 'toolbar',
-  id: 'top_toolbar',
   elements: [
     {
       view: 'label',
@@ -82,16 +81,30 @@ var row1 = {
 };
 
 var col1 = {
-  view: 'list',
-  minWidth: 200,
-  maxWidth: 250,
-  template: '#title#',
-  data: list,
-  select: 'multiselect',
+  rows: [
+    {
+      view: 'list',
+      scroll: false,
+      minWidth: 200,
+      maxWidth: 250,
+      template: '#title#',
+      data: list,
+      select: 'multiselect',
+    },
+    {
+      view: 'label',
+      align: 'center',
+      label:
+        "<span class='webix_icon wxi-check'></span>" +
+        "<span class='connected'>Connected</span>",
+    },
+  ],
 };
 var col2 = {
   view: 'datatable',
+  scroll: 'y',
   gravity: 2,
+  minHeight: 585,
   columns: [
     { id: 'title', header: 'Title', fillspace: true },
     { id: 'year', header: 'Year', fillspace: true },
@@ -103,7 +116,6 @@ var col2 = {
 };
 var col3 = {
   view: 'form',
-  height: 585,
   elements: [
     {
       rows: [
@@ -134,11 +146,19 @@ var row2 = {
 
 var row3 = {
   view: 'template',
+  maxHeight: 20,
   template:
     'The sofware is provided by <a href="https://webix.com">https://webix.com</a>. All rights reserved (c)',
   css: 'r3_text',
 };
 
-webix.ui({
-  rows: [row1, row2, row3],
-});
+var window = webix
+  .ui({
+    view: 'window',
+    fullscreen: true,
+    head: row1,
+    body: {
+      rows: [row2, row3],
+    },
+  })
+  .show();
