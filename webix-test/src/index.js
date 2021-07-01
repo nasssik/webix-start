@@ -84,6 +84,7 @@ var col1 = {
   rows: [
     {
       view: 'list',
+      autoheigh: true, //didn't work
       scroll: false,
       minWidth: 200,
       maxWidth: 250,
@@ -102,9 +103,9 @@ var col1 = {
 };
 var col2 = {
   view: 'datatable',
+  autoheigh: true,
   scroll: 'y',
   gravity: 2,
-  minHeight: 585,
   columns: [
     { id: 'title', header: 'Title', fillspace: true },
     { id: 'year', header: 'Year', fillspace: true },
@@ -116,6 +117,7 @@ var col2 = {
 };
 var col3 = {
   view: 'form',
+  autoheigh: true,
   elements: [
     {
       rows: [
@@ -137,6 +139,7 @@ var col3 = {
         { view: 'button', label: 'Clear' },
       ],
     },
+    {},
   ],
 };
 
@@ -146,19 +149,10 @@ var row2 = {
 
 var row3 = {
   view: 'template',
-  maxHeight: 20,
   template:
     'The sofware is provided by <a href="https://webix.com">https://webix.com</a>. All rights reserved (c)',
   css: 'r3_text',
 };
-
-var window = webix
-  .ui({
-    view: 'window',
-    fullscreen: true,
-    head: row1,
-    body: {
-      rows: [row2, row3],
-    },
-  })
-  .show();
+webix.ui({
+  rows: [row1, row2, row3],
+});
