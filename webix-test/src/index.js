@@ -64,6 +64,7 @@ var list = [
 
 var row1 = {
   view: 'toolbar',
+  height: 40,
   elements: [
     {
       view: 'label',
@@ -84,7 +85,6 @@ var col1 = {
   rows: [
     {
       view: 'list',
-      autoheigh: true, //didn't work
       scroll: false,
       minWidth: 200,
       maxWidth: 250,
@@ -103,7 +103,6 @@ var col1 = {
 };
 var col2 = {
   view: 'datatable',
-  autoheigh: true,
   scroll: 'y',
   gravity: 2,
   columns: [
@@ -117,7 +116,7 @@ var col2 = {
 };
 var col3 = {
   view: 'form',
-  autoheigh: true,
+  autoheight: true,
   elements: [
     {
       rows: [
@@ -149,6 +148,7 @@ var row2 = {
 
 var row3 = {
   view: 'template',
+  height: 25,
   template:
     'The sofware is provided by <a href="https://webix.com">https://webix.com</a>. All rights reserved (c)',
   css: 'r3_text',
