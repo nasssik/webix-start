@@ -76,6 +76,7 @@ var row1 = {
       type: 'icon',
       icon: 'wxi-user',
       maxWidth: 80,
+      popup: 'pop',
       css: 'webix_transparent .webix_button',
     },
   ],
@@ -103,6 +104,7 @@ var col1 = {
 };
 var col2 = {
   view: 'datatable',
+  id: 'mydata',
   scroll: 'y',
   gravity: 2,
   columns: [
@@ -116,15 +118,40 @@ var col2 = {
 };
 var col3 = {
   view: 'form',
+  id: 'myform',
   autoheight: true,
   elements: [
     {
       rows: [
         { template: 'Edit Films', type: 'section' },
-        { view: 'text', label: 'Title', value: '' },
-        { view: 'text', label: 'Year', value: '' },
-        { view: 'text', label: 'Rating', value: '' },
-        { view: 'text', label: 'Votes', value: '' },
+        {
+          view: 'text',
+          label: 'Title',
+          name: 'title',
+          value: '',
+          invalidMessage: 'Empty title',
+        },
+        {
+          view: 'text',
+          label: 'Year',
+          name: 'year',
+          value: '',
+          invalidMessage: 'Year is not between 1970 and 2021',
+        },
+        {
+          view: 'text',
+          label: 'Rating',
+          name: 'rating',
+          value: '',
+          invalidMessage: 'Incorrect rating',
+        },
+        {
+          view: 'text',
+          label: 'Votes',
+          name: 'votes',
+          value: '',
+          invalidMessage: 'Votes must me less than 10000',
+        },
       ],
     },
     {
@@ -133,13 +160,48 @@ var col3 = {
           view: 'button',
           label: 'Add new',
           type: 'form',
+          click: function () {
+            if ($$('myform').validate()) {
+              var item = $$('myform').getValues();
+              $$('mydata').add(item);
+              webix.message('added successfully');
+            }
+          },
           css: 'webix_primary .webix_button',
         },
-        { view: 'button', label: 'Clear' },
+        {
+          view: 'button',
+          label: 'Clear',
+          click: function () {
+            webix
+              .confirm({
+                title: 'Please, confirm',
+                ok: 'Clear',
+                cancel: 'Cancel',
+                text: 'Are you sure that you want to clear your form?',
+              })
+              .then(function () {
+                $$('myform').clear();
+                $$('myform').clearValidation();
+              });
+          },
+        },
       ],
     },
     {},
   ],
+  rules: {
+    title: webix.rules.isNotEmpty,
+    year: function (value) {
+      return value > 1970 && value < 2021;
+    },
+    votes: function (value) {
+      return value < 100000;
+    },
+    rating: function (value) {
+      return webix.rules.isNotEmpty && value != 0;
+    },
+  },
 };
 
 var row2 = {
@@ -155,4 +217,19 @@ var row3 = {
 };
 webix.ui({
   rows: [row1, row2, row3],
+});
+
+webix.ui({
+  view: 'popup',
+  id: 'pop',
+  body: {
+    view: 'list',
+    data: [
+      { id: '1', title: 'Settings' },
+      { id: '2', title: 'Log Out' },
+    ],
+    template: '#title#',
+    autoheight: true,
+    select: true,
+  },
 });
