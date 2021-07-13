@@ -8,13 +8,11 @@
 .textToolbar {
   color: white;
 }
-.webix_list {
+.webix_list.class_list {
   background-color: #eee;
 }
-.webix_list_item {
-  background-color: #eee;
-}
-.webix_list_item.webix_selected {
+.class_list  .webix_list_item.webix_selected,
+.class_list  .webix_list_item.webix_selected:focus{
   background-color: #1995ad;
 }
 .r3_text {
