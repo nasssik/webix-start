@@ -8,10 +8,10 @@
 .textToolbar {
   color: white;
 }
-.webix_list {
+.webix_list.class_list {
   background-color: #eee;
 }
-.webix_list_item {
+.webix_list_item.class_list {
   background-color: #eee;
 }
 .webix_list_item.webix_selected {
