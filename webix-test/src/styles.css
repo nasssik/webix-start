@@ -27,8 +27,10 @@
 .wxi-check  {
   color: green;
 }
+
 .wxi-close {
 float: right;
+margin-top:6px;
 }
 
 .data_hover {
@@ -36,4 +38,8 @@ float: right;
 }
 .highlight {
   background-color: plum;
+}
+
+.webix_first{
+  background-color: #f4f5f9;
 }

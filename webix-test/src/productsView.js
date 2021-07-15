@@ -8,7 +8,8 @@ const prodView = {
             id: "value", header: "Title", width: 1000,
             template: "{common.treetable()} #title#"
         },
-        { id: "price", header: "Price", width: 600, }],
+        { id: "price", header: "Price", width: 600, }
+    ],
     select: "row",
     ready: function () {
         this.openAll();

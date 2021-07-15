@@ -84,4 +84,3 @@ webix.ui({
   },
 });
 
-$$("mydata").addRowCss(1, "webix_ss_header");

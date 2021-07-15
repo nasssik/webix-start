@@ -47,7 +47,8 @@ const ulist = {
             template: "#name# from #country# " + "<span class='webix_icon wxi-close' style></span>",
             onClick: {
                 "wxi-close": function (event, id, node) {
-                    this.remove(id)
+                    this.remove(id);
+                    return false
                 }
             },
             scheme: {

@@ -18,7 +18,8 @@ const col2 = {
     },
     onClick: {
         "wxi-trash": function (event, id, node) {
-            this.remove(id)
+            this.remove(id);
+            return false
         }
     },
     hover: "data_hover",
