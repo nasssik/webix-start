@@ -23,6 +23,7 @@ const col2 = {
         }
     },
     hover: "data_hover",
+    css: "table_style"
 };
 
 function valuesToForm(id) {
