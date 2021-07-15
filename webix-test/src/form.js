@@ -39,18 +39,11 @@ const col3 = {
             cols: [
                 {
                     view: 'button',
-                    label: 'Add new',
+                    label: 'Save',
                     type: 'form',
-                    click: () => {
-                        const form = $$('myform');
-                        const data = $$('mydata');
-                        if (form.validate()) {
-                            var item = form.getValues();
-                            data.add(item);
-                            webix.message('added successfully');
-                        }
-                    },
                     css: 'webix_primary',
+                    click: saveItem
+
                 },
                 {
                     view: 'button',
@@ -86,4 +79,22 @@ const col3 = {
             return webix.rules.isNotEmpty && value != 0;
         },
     },
+};
+
+
+function saveItem() {
+    const form = $$('myform');
+    const data = $$('mydata');
+    const item = form.getValues();
+    if (form.validate()) {
+        const item = form.getValues();
+        if (item.id) {
+            data.updateItem(item.id, item);
+            webix.message('updated successfully');
+        }
+        else {
+            data.add(item);
+            webix.message('added successfully');
+        }
+    }
 };

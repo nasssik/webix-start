@@ -1,10 +1,3 @@
-let list = [
-  { title: 'Dashboard' },
-  { title: 'Users' },
-  { title: 'Products' },
-  { title: 'Locations' },
-];
-
 const row1 = {
   view: 'toolbar',
   height: 40,
@@ -32,9 +25,13 @@ const col1 = {
       scroll: false,
       minWidth: 200,
       maxWidth: 250,
-      template: '#title#',
-      data: list,
-      select: 'multiselect',
+      data: ["Dashboard", "Users", "Products", "Admin"],
+      select: true,
+      on: {
+        onAfterSelect: function (id) {
+          $$(id).show();
+        }
+      },
     },
     {
       view: 'label',
@@ -43,12 +40,22 @@ const col1 = {
         "<span class='webix_icon wxi-check'></span>" +
         "<span class='connected'>Connected</span>",
     },
+
   ],
+};
+
+const main = {
+  cells: [
+    { id: "Dashboard", cols: [col2, col3] },
+    { id: "Users", rows: [ulist, uchart] },
+    { id: "Products", rows: [prodView] },
+    { id: "Admin", template: "Admin view" }
+  ]
 };
 
 
 const row2 = {
-  cols: [col1, { view: 'resizer' }, col2, col3],
+  cols: [col1, { view: 'resizer' }, main],
 };
 
 const row3 = {
@@ -76,3 +83,4 @@ webix.ui({
     select: true,
   },
 });
+

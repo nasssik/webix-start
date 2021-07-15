@@ -24,6 +24,22 @@
 .webix_el_label .webix_el_box {
   background-color: #eee;
 }
-.webix_icon {
+.wxi-check  {
   color: green;
+}
+
+.wxi-close {
+float: right;
+margin-top:6px;
+}
+
+.data_hover {
+  background-color: pink;
+}
+.highlight {
+  background-color: plum;
+}
+
+.table_style {
+  background-color: #f4f5f9;
 }
