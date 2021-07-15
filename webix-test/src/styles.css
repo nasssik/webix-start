@@ -27,11 +27,13 @@
 .wxi-check  {
   color: green;
 }
-
-.data_hover{
-  background-color: pink;
+.wxi-close {
+float: right;
 }
 
-.first_row{
-  background-color: green; 
+.data_hover {
+  background-color: pink;
+}
+.highlight {
+  background-color: plum;
 }

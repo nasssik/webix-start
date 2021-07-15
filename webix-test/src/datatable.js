@@ -29,4 +29,3 @@ function valuesToForm(id) {
     $$("myform").setValues(values)
 };
 
-//$$("mydata").addRowCss(1, "first_row"); //can't find the reason why this line doesn't work:(

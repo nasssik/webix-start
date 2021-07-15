@@ -85,13 +85,16 @@ const col3 = {
 function saveItem() {
     const form = $$('myform');
     const data = $$('mydata');
-    var item = form.getValues();
-    if (form.validate() && item.id) {
-        data.updateItem(item.id, item);
-        webix.message('updated successfully');
-    }
-    else if (form.validate()) {
-        data.add(item);
-        webix.message('added successfully');
+    const item = form.getValues();
+    if (form.validate()) {
+        const item = form.getValues();
+        if (item.id) {
+            data.updateItem(item.id, item);
+            webix.message('updated successfully');
+        }
+        else {
+            data.add(item);
+            webix.message('added successfully');
+        }
     }
 };
