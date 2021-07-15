@@ -6,7 +6,7 @@ const col2 = {
     gravity: 2,
     url: "../data/data.js",
     columns: [
-        { id: 'title', header: ['Title', { content: "textFilter" }], fillspace: true },
+        { id: 'title', header: ['Title', { content: "textFilter" }], fillspace: true, css: "table_style" },
         { id: 'year', header: ['Year', { content: "textFilter" }], fillspace: true },
         { id: 'votes', header: ['Votes', { content: "textFilter" }], fillspace: true },
         { id: 'rating', header: ['Rating', { content: "textFilter" }], fillspace: true },
@@ -23,7 +23,6 @@ const col2 = {
         }
     },
     hover: "data_hover",
-    css: "table_style"
 };
 
 function valuesToForm(id) {
