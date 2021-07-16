@@ -89,7 +89,7 @@ function saveItem() {
     if (form.validate()) {
         const item = form.getValues();
         if (item.id) {
-            data.updateItem(item.id, item);
+            form.save();
             webix.message('updated successfully');
         }
         else {
@@ -98,3 +98,5 @@ function saveItem() {
         }
     }
 };
+
+
