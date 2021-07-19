@@ -22,6 +22,10 @@ const ulist = {
                         by: "#name#",
                         dir: "asc",
                         as: "string"
+                    });
+                    $$("uchart").sort({
+                        by:"#country#",
+                        dir:"asc"
                     })
                 },
             },
@@ -35,6 +39,10 @@ const ulist = {
                         by: "#name#",
                         dir: "desc",
                         as: "string"
+                    });
+                    $$("uchart").sort({
+                        by:"#country#",
+                        dir:"desc"
                     })
                 },
             },
@@ -82,11 +90,14 @@ const uchart = {
     view: "chart",
     id: "uchart",
     type: "bar",
-    url: "../data/users.js",
-    barWidth: 100,
     value: "#country#",
     xAxis: {
         title: "Country",
-        template: "#id#"
-    }
+        template: "#value#"
+    },
+    yAxis:{
+        start:0,
+        end:10,
+        step:1
+    },
 }

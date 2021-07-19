@@ -3,9 +3,9 @@ const prodView = {
     url: "../data/products.js",
     scroll: "y",
     columns: [
-        { id: "id", editor: "text", header: "", css: { "text-align": "right" }, width: 50 },
+        { id: "id",header: "", css: { "text-align": "right" }, width: 50 },
         {
-            id: "value", editor: "text", header: "Title", width: 1000,
+            id: "title", editor: "text", header: "Title", width: 1000,
             template: "{common.treetable()} #title#"
         },
         { id: "price", editor: "text", header: "Price", width: 600, }
@@ -13,7 +13,7 @@ const prodView = {
     select: "row",
     rules: {
         "price": webix.rules.isNumber,
-        "value": webix.rules.isNotEmpty
+        "title": webix.rules.isNotEmpty
     },
     ready: function () {
         this.openAll();

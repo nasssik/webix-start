@@ -3,42 +3,21 @@ const col2 = {
     rows: [
         {
             view: "tabbar",
+            id:"tabbar",
             options: [
                 { value: 'All', id: 'all' },
                 { value: 'Old', id: 'old' },
                 { value: 'Modern', id: 'modern', },
                 { value: 'New', id: 'new' }
             ],
-            cells: [
-                {
-                    id: "all",
-                },
-                {
-                    id: "old",
-                    click: function () {
-                        $$("mydata").filter((obj) => {
-                            return (obj.year <= 2000)
-
-                        })
-                    }
-                },
-                {
-                    id: "modern",
-                    click: function () {
-                        $$("mydata").filter((obj) => {
-                            return (obj.year > 2000 && obj.year < 2019)
-                        })
-                    }
-                },
-                {
-                    id: "new",
-                    click: function () {
-                        $$("mydata").filter((obj) => {
-                            return (obj.year >= 2019)
-                        })
-                    }
-                },
-            ]
+            on: {
+                onChange: function(){
+                    $$("mydata").filter((obj) =>
+                    {
+                        return (obj.year <= 2000);   // not finished
+                    })
+                }
+            }
         },
         {
             view: 'datatable',
