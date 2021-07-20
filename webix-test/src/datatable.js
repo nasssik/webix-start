@@ -11,26 +11,22 @@ const col2 = {
                 { value: 'New', id: 'new' }
             ],
             on: {
-                onChange: function(value){
-                  switch (value) {
+                onChange: (value)=>{
+                  $$("mydata").filter((obj)=>{
+                    switch (value) {
                     case "old":
-                      $$("mydata").filter(function(obj){
                         return obj.year<1999;
-                      });
                       break;
                     case "modern":
-                      $$("mydata").filter(function(obj){
                         return (obj.year>=1999&&obj.year<2009);
-                      });
                       break;
                     case "new":
-                      $$("mydata").filter(function(obj){
                         return obj.year>=2009;
-                      });
                       break;
                     default:
-                      $$("mydata").filter();
+                      return obj.year;
                   }
+                  })                  
                 }
               }
         },
@@ -59,6 +55,13 @@ const col2 = {
                 "wxi-trash": function (event, id, node) {
                     this.remove(id);
                     return false
+                }
+            },
+            on: {
+                onAfterAdd: (obj)=>{
+                    const data=$$("mydata")
+                   data.select(obj);
+                   data.showItem(obj)
                 }
             },
             hover: "data_hover",
