@@ -11,13 +11,28 @@ const col2 = {
                 { value: 'New', id: 'new' }
             ],
             on: {
-                onChange: function(){
-                    $$("mydata").filter((obj) =>
-                    {
-                        return (obj.year <= 2000);   // not finished
-                    })
+                onChange: function(value){
+                  switch (value) {
+                    case "old":
+                      $$("mydata").filter(function(obj){
+                        return obj.year<1999;
+                      });
+                      break;
+                    case "modern":
+                      $$("mydata").filter(function(obj){
+                        return (obj.year>=1999&&obj.year<2009);
+                      });
+                      break;
+                    case "new":
+                      $$("mydata").filter(function(obj){
+                        return obj.year>=2009;
+                      });
+                      break;
+                    default:
+                      $$("mydata").filter();
+                  }
                 }
-            }
+              }
         },
         {
             view: 'datatable',
