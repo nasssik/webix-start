@@ -44,7 +44,7 @@ const col2 = {
             },
             columns: [
                 { id: 'title', header: ['Title', { content: "textFilter" }], fillspace: true, css: "table_style" },
-                { id: 'categoryId', header: ['Category', { content: "selectFilter" }], editor: "richSelect", fillspace: true, collection: "../data/categories.js" },
+                { id: 'categoryId', header: ['Category', { content: "selectFilter" }], editor: "richSelect", fillspace: true, collection: cCategories },
                 { id: 'year', header: 'Year', fillspace: true },
                 { id: 'votes', header: ['Votes', { content: "textFilter" }], fillspace: true },
                 { id: 'rating', header: ['Rating', { content: "textFilter" }], fillspace: true },

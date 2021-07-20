@@ -3,7 +3,8 @@ const cCategories = new webix.DataCollection({
   });
 
 const cUsers = new webix.DataCollection({
-    url:'../data/users.js'
+    url:'../data/users.js',
+    //save: '../data/users.js'
   });
 
 const admin = {

@@ -49,7 +49,7 @@ const main = {
     { id: "Dashboard", cols: [col2, col3] },
     { id: "Users", rows: [ulist, uchart] },
     { id: "Products", rows: [prodView] },
-    { id: "Admin", template: "Admin view" }
+    { id: "Admin", rows: [admin] }
   ]
 };
 
@@ -99,4 +99,6 @@ $$("uchart").sync($$("ulist"), () => {
   })
 });
 
+$$("admin_table").sync(cCategories)
+$$("ulist").sync(cUsers)
 
