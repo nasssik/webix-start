@@ -58,8 +58,10 @@ const col3 = {
                             })
                             .then(() => {
                                 const form = $$('myform');
+                                const data=$$('mydata');
                                 form.clear();
                                 form.clearValidation();
+                                data.clearSelection();
                             });
                     },
                 },
@@ -84,17 +86,10 @@ const col3 = {
 
 function saveItem() {
     const form = $$('myform');
-    const data = $$('mydata');
-    const item = form.getValues();
     if (form.validate()) {
-        const item = form.getValues();
-        if (item.id) {
-            data.updateItem(item.id, item);
-            webix.message('updated successfully');
-        }
-        else {
-            data.add(item);
-            webix.message('added successfully');
-        }
+            form.save();
+            webix.message('success');
     }
 };
+
+

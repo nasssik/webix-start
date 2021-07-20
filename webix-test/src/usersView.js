@@ -22,6 +22,10 @@ const ulist = {
                         by: "#name#",
                         dir: "asc",
                         as: "string"
+                    });
+                    $$("uchart").sort({
+                        by:"#country#",
+                        dir:"asc"
                     })
                 },
             },
@@ -35,15 +39,38 @@ const ulist = {
                         by: "#name#",
                         dir: "desc",
                         as: "string"
+                    });
+                    $$("uchart").sort({
+                        by:"#country#",
+                        dir:"desc"
+                    })
+                },
+            },
+            {
+                view: "button",
+                id: "add_new",
+                label: "Add new",
+                css: "webix_primary",
+                click: () => {
+                    $$("ulist").add({
+                        name: "Alex Nemkovich",
+                        age: "28",
+                        country: "Belarus"
                     })
                 },
             }]
         },
         {
-            view: "list",
+            view: "ulist",
             id: "ulist",
             url: "../data/users.js",
             select: true,
+            editable: true,
+            editor: "text",
+            editValue: "name",
+            rules: {
+                "name": webix.rules.isNotEmpty
+            },
             template: "#name# from #country# " + "<span class='webix_icon wxi-close' style></span>",
             onClick: {
                 "wxi-close": function (event, id, node) {
@@ -53,7 +80,7 @@ const ulist = {
             },
             scheme: {
                 $init: (obj) => {
-                    if (obj.id >= 1 && obj.id <= 5) obj.$css = "highlight";
+                    if (obj.age < 26) obj.$css = "highlight";
                 }
             },
         }]
@@ -61,11 +88,16 @@ const ulist = {
 
 const uchart = {
     view: "chart",
+    id: "uchart",
     type: "bar",
-    url: "../data/users.js",
-    value: "#age#",
+    value: "#country#",
     xAxis: {
-        title: "Age",
-        template: "#age#"
-    }
+        title: "Country",
+        template: "#value#"
+    },
+    yAxis:{
+        start:0,
+        end:10,
+        step:1
+    },
 }

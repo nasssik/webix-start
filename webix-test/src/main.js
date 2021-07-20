@@ -65,6 +65,11 @@ const row3 = {
     'The sofware is provided by <a href="https://webix.com">https://webix.com</a>. All rights reserved (c)',
   css: 'r3_text',
 };
+
+webix.protoUI({
+  name: "ulist"
+}, webix.EditAbility, webix.ui.list);
+
 webix.ui({
   rows: [row1, row2, row3],
 });
@@ -83,4 +88,15 @@ webix.ui({
     select: true,
   },
 });
+
+$$("myform").bind("mydata");
+$$("uchart").sync($$("ulist"), () => {
+  $$("uchart").group({
+    by: "country",
+    map: {
+      country: ["country", "count"]
+    }
+  })
+});
+
 
