@@ -11,20 +11,20 @@ const col2 = {
                 { value: 'New', id: 'new' }
             ],
             on: {
-                onChange: (value)=>{
-                  $$("mydata").filter((obj)=>{
+                onChange: (value) => {
+                  $$("mydata").filter((obj) => {
                     switch (value) {
                     case "old":
-                        return obj.year<1999;
+                        return obj.year < 1999;
                       break;
                     case "modern":
-                        return (obj.year>=1999&&obj.year<2009);
+                        return (obj.year >= 1999 && obj.year < 2009);
                       break;
                     case "new":
-                        return obj.year>=2009;
+                        return obj.year >= 2009;
                       break;
                     default:
-                      return obj.year;
+                      return true;
                   }
                   })                  
                 }
@@ -58,10 +58,9 @@ const col2 = {
                 }
             },
             on: {
-                onAfterAdd: (obj)=>{
-                    const data=$$("mydata")
-                   data.select(obj);
-                   data.showItem(obj)
+                onAfterAdd: function(obj){
+                   this.select(obj);
+                   this.showItem(obj)
                 }
             },
             hover: "data_hover",
