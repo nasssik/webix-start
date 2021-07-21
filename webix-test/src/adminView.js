@@ -1,38 +1,37 @@
 const cCategories = new webix.DataCollection({
-    url:'../data/categories.js'
-  });
+  url: '../data/categories.js',
+});
 
 const cUsers = new webix.DataCollection({
-    url:'../data/users.js',
-    //save: '../data/users.js'
-  });
+  url: '../data/users.js',
+});
 
 const admin = {
-    rows:[
+  rows: [
     {
-    view:"datatable", 
-    id:"admin_table",
-    editable:true,
-    editaction:"click",
-    rules: {
-        value: webix.rules.isNotEmpty
-    },
-      columns:[
-        { id:"id",	header:""},
-        { id:"value", editor:"text", header:"Category", fillspace: true},  
-        { width: 50, template: "{common.trashIcon()}" }
+      view: 'datatable',
+      id: 'admin_table',
+      editable: true,
+      editaction: 'click',
+      rules: {
+        value: webix.rules.isNotEmpty,
+      },
+      columns: [
+        { id: 'id', header: '' },
+        { id: 'value', editor: 'text', header: 'Category', fillspace: true },
+        { width: 50, template: '{common.trashIcon()}' },
       ],
       onClick: {
-        "wxi-trash": function (event, id, node) {
-            this.remove(id);
-            return false
+        'wxi-trash': function (event, id, node) {
+          cCategories.remove(id);
+          return false;
         },
+      },
     },
-},
-{ view:"button", value:"Add item", click:addItem, css:"webix_danger" }
-]
-}
+    { view: 'button', value: 'Add item', click: addItem, css: 'webix_danger' },
+  ],
+};
 
-function addItem(){
-    $$("admin_table").add({value:"Cartoon" });
-  };
+function addItem() {
+  cCategories.add({ value: 'Cartoon' });
+}
