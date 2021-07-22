@@ -52,7 +52,7 @@ const ulist = {
                 label: "Add new",
                 css: "webix_primary",
                 click: () => {
-                    $$("ulist").add({
+                    cUsers.add({
                         name: "Alex Nemkovich",
                         age: "28",
                         country: "Belarus"
@@ -63,7 +63,7 @@ const ulist = {
         {
             view: "ulist",
             id: "ulist",
-            url: "../data/users.js",
+           // url: "../data/users.js",
             select: true,
             editable: true,
             editor: "text",
@@ -74,7 +74,7 @@ const ulist = {
             template: "#name# from #country# " + "<span class='webix_icon wxi-close' style></span>",
             onClick: {
                 "wxi-close": function (event, id, node) {
-                    this.remove(id);
+                    cUsers.remove(id);
                     return false
                 }
             },
